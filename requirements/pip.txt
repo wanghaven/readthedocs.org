@@ -1,5 +1,4 @@
 ## Upgraded packages
-pip==6.1.1
 virtualenv==13.1.0
 docutils==0.11
 Sphinx==1.3.1

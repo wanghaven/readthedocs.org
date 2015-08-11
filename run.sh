@@ -1,7 +1,5 @@
 #!/bin/sh
 python ./manage.py syncdb
 python ./manage.py migrate
-echo "alter user postgres with password 'postgres';" | psql -U postgres -h $DB_PORT_5432_TCP_ADDR -p 5432
-python ./manage.py makemigrations
-python ./manage.py migrate
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('test', 'test@example.com', 'test')" | python manage.py shell
 python ./manage.py runserver 0.0.0.0:8000

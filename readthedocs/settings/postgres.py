@@ -8,16 +8,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '',
-        'PORT': '',
+        'PASSWORD': '',
+        'HOST': os.environ.get('DB_PORT_5432_TCP_ADDR', ''),
+        'PORT': os.environ.get('DB_PORT_5432_TCP_PORT', ''),
     }
 }
 
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': 'localhost:6379',
+        'LOCATION': (os.environ.get('CACHE_PORT_6379_TCP_ADDR') or 'localhost') + ':6379',
         'OPTIONS': {
             'DB': 0,
             'PARSER_CLASS': 'redis.connection.HiredisParser'
@@ -26,7 +26,7 @@ CACHES = {
 }
 
 REDIS = {
-    'host': 'localhost',
+    'host': os.environ.get('CACHE_PORT_6379_TCP_ADDR', 'localhost'),
     'port': 6379,
     'db': 0,
 }
