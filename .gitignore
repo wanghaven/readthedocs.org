@@ -13,7 +13,6 @@ bower_components/
 deploy/.vagrant
 dist/*
 doc_root
-local_settings.py
 locks/*
 logs/*
 media/dash
