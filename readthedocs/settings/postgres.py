@@ -8,9 +8,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '',
+        'PASSWORD': '3rm4gerdsUchago0dppswrd9ajfn7',
         'HOST': os.environ.get('DB_PORT_5432_TCP_ADDR', ''),
-        'PORT': os.environ.get('DB_PORT_5432_TCP_PORT', ''),
+        'PORT': 5432,
     }
 }
 
@@ -44,8 +44,8 @@ SESSION_COOKIE_HTTPONLY = False
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 CACHE_BACKEND = 'redis://'
 
-SLUMBER_USERNAME = 'test'
-SLUMBER_PASSWORD = 'test'  # noqa: ignore dodgy check
+SLUMBER_USERNAME = 'adminuser'
+SLUMBER_PASSWORD = 'j3lskj6kja8sd8jh5'  # noqa: ignore dodgy check
 SLUMBER_API_HOST = 'http://localhost:8000'
 # GROK_API_HOST = 'http://localhost:5555'
 PRODUCTION_DOMAIN = 'localhost:8000'
@@ -66,13 +66,6 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 CELERY_ALWAYS_EAGER = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 FILE_SYNCER = 'readthedocs.privacy.backends.syncers.LocalSyncer'
-
-# For testing locally. Put this in your /etc/hosts:
-# 127.0.0.1 test
-# and navigate to http://test:8000
-CORS_ORIGIN_WHITELIST = (
-    'test:8000',
-)
 
 # allauth settings
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
