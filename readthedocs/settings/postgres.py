@@ -31,8 +31,11 @@ REDIS = {
     'db': 0,
 }
 
+DEBUG = False
+TEMPLATE_DEBUG = False
+
 # Elasticsearch settings.
-ES_HOSTS = ['backup:9200', 'db:9200']
+ES_HOSTS = ['localhost:9200']
 ES_DEFAULT_NUM_REPLICAS = 1
 ES_DEFAULT_NUM_SHARDS = 5
 
@@ -47,7 +50,6 @@ CACHE_BACKEND = 'redis://'
 SLUMBER_USERNAME = 'adminuser'
 SLUMBER_PASSWORD = 'j3lskj6kja8sd8jh5'  # noqa: ignore dodgy check
 SLUMBER_API_HOST = 'http://localhost:8000'
-# GROK_API_HOST = 'http://localhost:5555'
 PRODUCTION_DOMAIN = 'localhost:8000'
 
 WEBSOCKET_HOST = 'websocket.localhost:8088'
