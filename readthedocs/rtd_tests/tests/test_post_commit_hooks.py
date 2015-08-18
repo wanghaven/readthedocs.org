@@ -106,16 +106,12 @@ class GitLabWebHookTest(TestCase):
 class PostCommitTest(TestCase):
     fixtures = ["eric", "test_data"]
 
-    def tearDown(self):
-        tasks.update_docs = self.old_bd
-
     def setUp(self):
-        self.old_bd = tasks.update_docs
-
         def mock(*args, **kwargs):
-            log.info("Mocking for great profit and speed.")
-        tasks.update_docs = mock
-        tasks.update_docs.delay = mock
+            pass
+
+        tasks.UpdateDocsTask.run = mock
+        tasks.UpdateDocsTask.delay = mock
 
         self.client.login(username='eric', password='test')
         self.payload = {
@@ -217,4 +213,4 @@ class PostCommitTest(TestCase):
         rtd.save()
         r = self.client.post('/build/%s' % rtd.pk, {'version_slug': 'master'})
         self.assertEqual(r.status_code, 302)
-        self.assertEqual(r._headers['location'][1], 'http://testserver/builds/read-the-docs/')
+        self.assertEqual(r._headers['location'][1], 'http://testserver/projects/read-the-docs/builds/')
