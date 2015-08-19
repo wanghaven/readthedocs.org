@@ -7,10 +7,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mysql',
-        'USER': 'mysql',
-        'PASSWORD': 'mypass',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': (os.environ.get('DB_PASS') or 'mypass'),
+        'HOST': (os.environ.get('DB_HOST') or 'localhost'),
+        'PORT': (os.environ.get('DB_PORT') or '3306'),
     }
 }
 
@@ -35,22 +35,22 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Elasticsearch settings.
-ES_HOSTS = ['localhost:9200']
+ES_HOSTS = ['elasticsearch:9200']
 ES_DEFAULT_NUM_REPLICAS = 1
 ES_DEFAULT_NUM_SHARDS = 5
 
-BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+BROKER_URL = 'redis://cache:6379/0'
+CELERY_RESULT_BACKEND = 'redis://cache:6379/0'
 
 SESSION_COOKIE_DOMAIN = None
 SESSION_COOKIE_HTTPONLY = False
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-CACHE_BACKEND = 'redis://'
+#CACHE_BACKEND = 'redis://'
 
 SLUMBER_USERNAME = 'adminuser'
 SLUMBER_PASSWORD = 'j3lskj6kja8sd8jh5'  # noqa: ignore dodgy check
-SLUMBER_API_HOST = 'http://localhost:8000'
-PRODUCTION_DOMAIN = 'localhost:8000'
+SLUMBER_API_HOST = 'http://192.168.59.103/'
+PRODUCTION_DOMAIN = (os.environ.get('PRODUCTION_DOMAIN') or 'localhost')
 
 WEBSOCKET_HOST = 'websocket.localhost:8088'
 
