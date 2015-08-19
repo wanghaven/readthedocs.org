@@ -76,9 +76,14 @@ FILE_SYNCER = 'readthedocs.privacy.backends.syncers.LocalSyncer'
 # allauth settings
 #ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
-# This is where Nginx will serve the static assets
-STATIC_ROOT = os.path.join(os.getcwd(), "static/")
+MEDIA_ROOT = os.path.join(os.getcwd(), 'media')
+MEDIA_URL = '/media/'
 
+STATIC_ROOT = os.path.join(os.getcwd(), 'media', 'static')
+STATIC_URL = "/static/"
+STATICFILES_DIRS = (
+    os.path.join(os.getcwd(), 'readthedocs', 'static'),
+)
 
 if not os.environ.get('DJANGO_SETTINGS_SKIP_LOCAL', False):
     try:
