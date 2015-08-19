@@ -31,7 +31,6 @@ REDIS = {
     'db': 0,
 }
 
-DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Elasticsearch settings.
