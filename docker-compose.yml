@@ -1,0 +1,23 @@
+rtd:
+  build: .
+  ports:
+    - 80:80
+  links:
+    - mysql:mysql
+    - cache:cache
+    - elasticsearch:elasticsearch
+  environment:
+    DB_HOST: mysql
+    DB_PASS: my-secret-pw
+    PRODUCTION_DOMAIN: 192.168.59.103
+
+mysql:
+  image: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: my-secret-pw
+
+cache:
+  image: redis
+
+elasticsearch:
+  image: elasticsearch
