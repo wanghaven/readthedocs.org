@@ -6,11 +6,11 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysql',
+        'NAME': 'rtfm_db',
         'USER': 'root',
-        'PASSWORD': (os.environ.get('DB_PASS') or 'mypass'),
-        'HOST': (os.environ.get('DB_HOST') or 'localhost'),
-        'PORT': (os.environ.get('DB_PORT') or '3306'),
+        'PASSWORD': (os.environ.get('MYSQL_ROOT_PASSWORD') or 'mypass'),
+        'HOST': (os.environ.get('MYSQL_PORT_3306_TCP_ADDR') or 'localhost'),
+        'PORT': (os.environ.get('MYSQL_PORT_3306_TCP_PORT') or '3306'),
     }
 }
 
@@ -35,12 +35,12 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Elasticsearch settings.
-ES_HOSTS = ['elasticsearch:9200']
+ES_HOSTS = [ (os.environ.get('ELASTICSEARCH_PORT_9200_TCP_ADDR') or 'localhost') + ':9200' ]
 ES_DEFAULT_NUM_REPLICAS = 1
 ES_DEFAULT_NUM_SHARDS = 5
 
-BROKER_URL = 'redis://cache:6379/0'
-CELERY_RESULT_BACKEND = 'redis://cache:6379/0'
+BROKER_URL = 'redis://' + (os.environ.get('CACHE_PORT_6379_TCP_ADDR') or 'localhost') + ':6379/0'
+CELERY_RESULT_BACKEND = 'redis://' + (os.environ.get('CACHE_PORT_6379_TCP_ADDR') or 'localhost') + ':6379/0'
 
 SESSION_COOKIE_DOMAIN = None
 SESSION_COOKIE_HTTPONLY = False
@@ -68,7 +68,7 @@ FILE_SYNCER = 'readthedocs.privacy.backends.syncers.LocalSyncer'
 MEDIA_ROOT = os.path.join(os.getcwd(), 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(os.getcwd(), 'media', 'static')
+STATIC_ROOT = os.path.join(os.getcwd(), 'static')
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (
     os.path.join(os.getcwd(), 'readthedocs', 'static'),
