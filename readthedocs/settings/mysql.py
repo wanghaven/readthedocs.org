@@ -41,6 +41,7 @@ ES_DEFAULT_NUM_SHARDS = 5
 
 BROKER_URL = 'redis://' + (os.environ.get('CACHE_PORT_6379_TCP_ADDR') or 'localhost') + ':6379/0'
 CELERY_RESULT_BACKEND = 'redis://' + (os.environ.get('CACHE_PORT_6379_TCP_ADDR') or 'localhost') + ':6379/0'
+CELERY_ALWAYS_EAGER = True
 
 SESSION_COOKIE_DOMAIN = None
 SESSION_COOKIE_HTTPONLY = False
@@ -48,7 +49,7 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 SLUMBER_USERNAME = 'adminuser'
 SLUMBER_PASSWORD = 'j3lskj6kja8sd8jh5'  # noqa: ignore dodgy check
-SLUMBER_API_HOST = 'http://192.168.59.103/'
+SLUMBER_API_HOST = 'http://192.168.59.103'
 PRODUCTION_DOMAIN = (os.environ.get('PRODUCTION_DOMAIN') or 'localhost')
 
 WEBSOCKET_HOST = 'websocket.localhost:8088'
