@@ -72,7 +72,8 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(os.getcwd(), 'static')
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (
-    os.path.join(os.getcwd(), 'readthedocs', 'static'),
+    os.path.join(os.getcwd(), 'static'),
+    os.path.join(os.getcwd(), 'media'),
 )
 
 if not os.environ.get('DJANGO_SETTINGS_SKIP_LOCAL', False):
