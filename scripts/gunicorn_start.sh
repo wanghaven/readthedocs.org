@@ -1,6 +1,6 @@
 #!/bin/bash
 NAME="readthedocs"                                       # Name of the application
-DJANGODIR=/readthedocs.org/readthedocs/                  # Django project directory
+DJANGODIR=/readthedocs.org/                  			 # Django project directory
 SOCKFILE=/readthedocs.org/readthedocs/run/gunicorn.sock  # we will communicte using this unix socket                                         # the group to run as
 NUM_WORKERS=3                                            # how many worker processes should Gunicorn spawn
 DJANGO_SETTINGS_MODULE=readthedocs.settings.mysql             # which settings file should Django use
