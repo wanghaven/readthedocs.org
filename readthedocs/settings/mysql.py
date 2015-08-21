@@ -8,7 +8,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rtfm_db',
         'USER': 'root',
-        'PASSWORD': (os.environ.get('MYSQL_ROOT_PASSWORD') or 'mypass'),
+        'PASSWORD': (os.environ.get('MYSQL_ROOT_PASSWORD') or ''),
         'HOST': (os.environ.get('MYSQL_PORT_3306_TCP_ADDR') or 'localhost'),
         'PORT': (os.environ.get('MYSQL_PORT_3306_TCP_PORT') or '3306'),
     }
@@ -49,7 +49,7 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 SLUMBER_USERNAME = 'adminuser'
 SLUMBER_PASSWORD = 'j3lskj6kja8sd8jh5'  # noqa: ignore dodgy check
-SLUMBER_API_HOST = 'http://192.168.59.103'
+SLUMBER_API_HOST = 'http://localhost'
 PRODUCTION_DOMAIN = (os.environ.get('PRODUCTION_DOMAIN') or 'localhost')
 
 WEBSOCKET_HOST = 'websocket.localhost:8088'
@@ -69,10 +69,9 @@ FILE_SYNCER = 'readthedocs.privacy.backends.syncers.LocalSyncer'
 MEDIA_ROOT = os.path.join(os.getcwd(), 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(os.getcwd(), 'static')
+STATIC_ROOT = os.path.join(os.getcwd(), 'media','static')
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (
-    os.path.join(os.getcwd(), 'static'),
     os.path.join(os.getcwd(), 'media'),
 )
 
@@ -81,7 +80,6 @@ if not os.environ.get('DJANGO_SETTINGS_SKIP_LOCAL', False):
         from local_settings import *  # noqa
     except ImportError:
         pass
-
 
 #CACHE_BACKEND = 'redis://'
 
