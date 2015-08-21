@@ -17,9 +17,6 @@ WORKDIR /readthedocs.org
 RUN pip install -r requirements/deploy.txt
 RUN pip install MySQL-python
 
-#Django setup
-RUN python manage.py collectstatic --noinput
-
 RUN apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
 # Start the RTD server
 EXPOSE 80
