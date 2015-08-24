@@ -49,7 +49,7 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 SLUMBER_USERNAME = 'adminuser'
 SLUMBER_PASSWORD = 'j3lskj6kja8sd8jh5'  # noqa: ignore dodgy check
-SLUMBER_API_HOST = 'http://localhost'
+SLUMBER_API_HOST = 'http://192.168.59.103'
 PRODUCTION_DOMAIN = (os.environ.get('PRODUCTION_DOMAIN') or 'localhost')
 
 WEBSOCKET_HOST = 'websocket.localhost:8088'
